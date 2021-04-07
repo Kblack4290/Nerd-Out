@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS nerdout_db;
+CREATE DATABASE nerdout_db;
