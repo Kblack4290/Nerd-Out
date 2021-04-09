@@ -9,7 +9,7 @@ router.get('/', withAuth, async (req, res) => {
     try {
         const commentData = await Comment.findAll({
 
-            include: [{ model: Blog }, { model: Comment }]
+            include: [{ model: Post }, { model: Comment }]
         })
         res.status(200).json(commentData);
     }
@@ -26,9 +26,9 @@ router.get('/:id', async (req, res) => {
                 id: req.params.id,
                 user_id: req.session.user_id,
                 comment_text: req.body.comment_text,
-                blog_id: req.body.post_id
+                post_id: req.body.post_id
             },
-            include: [{ model: Blog }, { model: Comment }],
+            include: [{ model: Post }, { model: Comment }],
         });
 
         if (!commentData) {
@@ -51,7 +51,7 @@ router.post('/', withAuth, async (req, res) => {
             ...req.body,
             user_id: req.session.user_id,
             comment_text: req.body.comment_text,
-            blog_id: req.body.post_id
+            post_id: req.body.post_id
         });
 
         res.status(200).json(newComment);
@@ -67,7 +67,7 @@ router.delete('/:id', withAuth, async (req, res) => {
             where: {
                 id: req.params.id,
                 user_id: req.session.user_id,
-                blog_id: req.body.post_id,
+                post_id: req.body.post_id,
                 comment_text: req.body.comment_text,
             },
         });
