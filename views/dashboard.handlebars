@@ -1,0 +1,23 @@
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">
+    Title
+  </label>
+  <input
+    type="text"
+    class="form-control"
+    id="title"
+    placeholder="Title"
+  />
+  <a href="/post/{{id}}">{{title}}</a>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">
+    Post by: {{user.name}}
+  </label>
+  <textarea
+    class="form-control"
+    id="postContent"
+    rows="3"
+  >{{post-content.content}}</textarea>
+</div>
+<script src="./js/profile.js"></script>
