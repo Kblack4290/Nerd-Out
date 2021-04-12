@@ -102,7 +102,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     res.render('dashboard', {
       ...user,
-      logged_in: true
+      logged_in: true,
+      homeActive: false,
+      dashActive: true,
+      loginActive: false,
     });
   } catch (err) {
     res.status(500).json(err);
