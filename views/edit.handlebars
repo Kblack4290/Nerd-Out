@@ -1,0 +1,18 @@
+<div class="container ">
+<div class="row">
+  <h2>Edit Post</h2>
+  <form class= "edit-post-form" action="./edit-post?_method=PUT" >
+    <div class="form-floating mb-3 ">
+  <input type="text" class="form-control" id="floatingInput" placeholder="{{post.title}}" value="{{id}}">
+  <label for="floatingInput" id="post-title"></label>
+</div>
+<div class="form-floating">
+  <textarea class="form-control" placeholder="{{posts.content}}" id="floatingTextarea2" style="height: 100px"></textarea>
+  <label for="floatingTextarea2" id="post-content"></label> <br>
+  <input class="btn btn-primary" type="submit" value="Submit">
+</div>
+</form>
+</div>
+</div>
+
+<script src="./js/edit.js"></script>

@@ -33,6 +33,7 @@ router.put('/:id', async (req, res) => {
       });
     res.status(200).json(req.params.id);
   } catch (err) {
+    console.log("HELLLLLLLOOOOOOOOOO");
     res.status(500).json(err);
   };
 });

@@ -47,14 +47,14 @@ router.get('/post/:id', async (req, res) => {
           attributes: ['name'],
         },
 
-        include[{
-          model: Comment,
-          include: {
-            model: User,
-            attributes: ['name']
+        // include[{
+        //   model: Comment,
+        //   include: {
+        //     model: User,
+        //     attributes: ['name']
 
-          }
-        }]
+        //   }
+        // }]
       ],
     });
 
@@ -70,6 +70,32 @@ router.get('/post/:id', async (req, res) => {
       loginActive: false,
     });
   } catch (err) {
+    console.log("Need EDIT");
+    res.status(500).json(err);
+  }
+});
+
+// edit post
+router.get('/edit/:id', async (req, res) => {
+  try { 
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+        model: User, 
+        attributes:['name'],
+      },
+    ],
+    });
+    const post = postData.get({plain: true});
+    res.render('edit', {
+    ...post,
+      logged_in: req.session.logged_in,
+      homeActive: false,
+      loginActive: false,
+      dashActive: false,
+    });
+  } catch (err){
+    
     res.status(500).json(err);
   }
 });
@@ -93,6 +119,8 @@ router.get('/createPost', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
