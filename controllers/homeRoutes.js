@@ -47,20 +47,20 @@ router.get('/post/:id', async (req, res) => {
           attributes: ['name'],
         },
 
-        // include[{
-        //   model: Comment,
-        //   include: {
-        //     model: User,
-        //     attributes: ['name']
+        include[{
+          model: Comment,
+          include: {
+            model: User,
+            attributes: ['name']
 
-        //   }
-        // }]
+          }
+        }]
       ],
     });
 
     const post = postData.get({ plain: true });
 
-    res.render('post', {
+    res.render('createPost', {
       ...post,
       logged_in: req.session.logged_in,
       logged_name: req.session.logged_name,
@@ -70,18 +70,17 @@ router.get('/post/:id', async (req, res) => {
       loginActive: false,
     });
   } catch (err) {
-    console.log("Need EDIT");
     res.status(500).json(err);
   }
 });
 
 // edit post
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit', async (req, res) => {
   try { 
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
-        model: User, 
+        model: User,
         attributes:['name'],
       },
     ],
@@ -95,7 +94,7 @@ router.get('/edit/:id', async (req, res) => {
       dashActive: false,
     });
   } catch (err){
-    
+    console.log("Need EDIT");
     res.status(500).json(err);
   }
 });
