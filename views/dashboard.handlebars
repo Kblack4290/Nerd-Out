@@ -1,30 +1,26 @@
 <div class="container new-post-form">
-{{#if post.length}}
+   {{#if posts.length}}
 <div class="mb-3">
 
-  <h2>{{name}}'s' Dashboard</h2>
-  
-  
-  {{#each post as |post|}}
-  
-<div id="title">
-  <a href="/post/{{posts.id}}">{{post.title}}</a>
-</div>
-  
-  <div class="user-post">
-    Posted: {{format_date date_crated}}
+ 
+<div>
+<h2>{{name}}'s' Dashboard</h2>
   </div>
+  
+ <ul> {{#each posts as |post|}}
+  
 
-  <div id="postContent">{{post-content}}</div>
+  <div id="postContent">{{>post-content}}</div>
 
 </div>
 {{/each}}
-
+</ul>
 {{/if}}
-
+<br>
 <div>
  <a type="button" class="btn btn-primary btn-lg " href="/createPost" id="create-new-post" >+Create New Post</a>
 </div>
+
 </div>
 
-{{!-- <script src="./js/dashboard.js"></script> --}}
+<script src="./js/post.js"></script>
