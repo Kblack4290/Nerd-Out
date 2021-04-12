@@ -1,23 +1,30 @@
+<div class="container new-post-form">
+{{#if post.length}}
 <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">
-    Title
-  </label>
-  <input
-    type="text"
-    class="form-control"
-    id="title"
-    placeholder="Title"
-  />
-  <a href="/post/{{id}}">{{title}}</a>
+
+  <h2>{{name}}'s' Dashboard</h2>
+  
+  
+  {{#each post as |post|}}
+  
+<div id="title">
+  <a href="/post/{{posts.id}}">{{post.title}}</a>
 </div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">
-    Post by: {{user.name}}
-  </label>
-  <textarea
-    class="form-control"
-    id="postContent"
-    rows="3"
-  >{{post-content.content}}</textarea>
+  
+  <div class="user-post">
+    Posted: {{format_date date_crated}}
+  </div>
+
+  <div id="postContent">{{post-content.content}}</div>
+
 </div>
-<script src="./js/profile.js"></script>
+{{/each}}
+
+{{/if}}
+
+<div>
+ <a type="button" class="btn btn-primary btn-lg " href="/createPost" id="create-new-post" >+Create New Post</a>
+</div>
+</div>
+
+{{!-- <script src="./js/dashboard.js"></script> --}}

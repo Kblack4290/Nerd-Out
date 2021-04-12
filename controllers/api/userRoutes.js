@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/api/users/login', async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     console.log(req.body);
     const userData = await User.findOne({ where: { name: req.body.name } });
@@ -40,6 +40,7 @@ router.post('/api/users/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      req.session.logged_name = userData.name;
       
       res.json({ user: userData, message: 'You are now logged in!' });
     });

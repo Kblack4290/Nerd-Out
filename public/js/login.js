@@ -6,6 +6,7 @@ const loginFormHandler = async (event) => {
   const password = document.querySelector('#signin-password').value.trim();
 
   if (name && password) {
+    console.log("HELLO");
     // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
       method: 'POST',
@@ -14,6 +15,7 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      console.log("OKAY");
       // If successful, redirect the browser to the profile page
       document.location.replace('/dashboard');
     } else {
@@ -30,24 +32,26 @@ const signupFormHandler = async (event) => {
   const password = document.querySelector('#signup-password').value.trim();
 
   if (name && password) {
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      body: JSON.stringify({ name, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+      const response = await fetch('/api/users/login', {
+          method: 'POST',
+          body: JSON.stringify({ name, password }),
+          headers: { 'Content-Type': 'application/json' },
+      });
 
-    if (response.ok) {
-      document.location.replace('/dashboard');
-    } else {
-      alert(response.statusText);
-    }
+      if (response.ok) {
+          document.location.replace('/login');
+      } else {
+          alert(response.statusText);
+      }
   }
 };
+
+
 
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
 
-document
+  document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);

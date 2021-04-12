@@ -11,14 +11,14 @@ router.get('/', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
-        include[{
-          model: Comment,
-          include: {
-            model: User,
-            attributes: ['name']
+        // include[{
+        //   model: Comment,
+        //   include: {
+        //     model: User,
+        //     attributes: ['name']
 
-          }
-        }]
+        //   }
+        // }]
       ],
     });
 
@@ -31,6 +31,7 @@ router.get('/', async (req, res) => {
       logged_in: req.session.logged_in 
     });
   } catch (err) {
+    console.log("whatever");
     res.status(500).json(err);
   }
 });
@@ -59,7 +60,29 @@ router.get('/post/:id', async (req, res) => {
 
     res.render('post', {
       ...post,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      logged_name: req.session.logged_name,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// creating new post
+router.get('/createPost', async (req, res) => {
+  try {
+    res.render('createPost', {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+      logged_in: req.session.logged_in,
+      homeActive: false,
+      dashActive: false,
+      loginActive: false,
     });
   } catch (err) {
     res.status(500).json(err);

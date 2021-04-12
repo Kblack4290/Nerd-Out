@@ -1,20 +1,20 @@
 [
   {
     "title": "Why is MVC so important",
-    "content": "A great way to organize your code",
+    "content": "MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer for data, the View layer for design, and the Controller layer for application logic",
     "date_created": "2/9/2021",
     "user_id": 1
   },
   {
-    "title": "",
-    "content": "A great way to organize your code",
-    "date_created": "2/9/2021",
-    "user_id": 1
+    "title": "Authentication Vs Authorization",
+    "content": "There is a difference between authentication and authorization. Authentication means confirming your own identity, whereas authorization means being allowed access to they system",
+    "date_created": "11/16/2020",
+    "user_id": 2
   },
   {
-    "title": "MVC",
-    "content": "A great way to organize your code",
-    "date_created": "2/9/2021",
-    "user_id": 1
-  },
+    "title": "Homework Vs Projects",
+    "content": "Projects are way better than homework",
+    "date_created": "4/2/2021",
+    "user_id": 3
+  }
 ]
