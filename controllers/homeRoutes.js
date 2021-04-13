@@ -39,6 +39,8 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/post/:id', async (req, res) => {
+
+  console.log(req.body);
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -75,7 +77,7 @@ router.get('/post/:id', async (req, res) => {
 });
 
 // edit post
-router.get('/edit', async (req, res) => {
+router.get('/edit/:id', async (req, res) => {
   try { 
     const postData = await Post.findByPk(req.params.id, {
       include: [
