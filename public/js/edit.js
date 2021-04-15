@@ -5,9 +5,10 @@ event.preventDefault();
 
 const title = document.querySelector('#floatingInput').value.trim();
 const content = document.querySelector('#floatingTextarea2').value.trim();
-
-if (title && content) {
-    const response = await fetch (`/api/post/${id}`, {
+const postId = document.querySelector('.postId').value
+console.log(postId);
+if (postId && title && content) {
+    const response = await fetch (`/api/post/${postId}`, {
         method: 'PUT',
         body: JSON.stringify({title, content}),
         headers: {
@@ -24,8 +25,8 @@ if (title && content) {
 
 
 const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
+    if (event.target.hasAttribute('data-postId')) {
+        const id = event.target.getAttribute('data-postId');
 
         const response = await fetch(`/api/post/${id}`, {
             method: 'DELETE',
@@ -39,10 +40,12 @@ const delButtonHandler = async (event) => {
     }
 };
 
-document
-    .querySelector('.post-list')
-    .addEventListener('click', delButtonHandler);
 
 document
     .querySelector('.edit-post-form')
     .addEventListener('submit',editFormHandler);
+    
+document
+    .querySelector('.edit-post-form')
+    .addEventListener('click', delButtonHandler);
+
