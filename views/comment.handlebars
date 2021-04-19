@@ -1,0 +1,33 @@
+
+
+{{>comment-content}}
+
+<form class="comment-form">
+    <div>
+         <textarea type="text" class="form-control comment-text" placeholder="Comment Here" id="floatingTextarea2" style="height: 100px"></textarea>
+    </div>
+
+    <div>
+        <input class="btn btn-primary dataId comment-btn " data-id="{{id}}" type="submit" value="Add comment">
+    </div>
+</form>
+
+{{#if posts.comments.length}}
+{{#each posts.comments as |comment|}}
+<div class="card">
+  <h6 class="card-header">Comment</h6>
+  <div class="card-body">
+    <p class="card-text">{{comment.content}}</p>
+    <p class="card-text">-{{comment.user.username}}, {{format_date comment.date_created}}</p>
+  </div>
+</div>
+{{/each}}
+{{/if}}
+
+
+
+
+{{#if loggedIn}}
+<script src="/js/comment.js"></script>
+{{!-- <script src="/js/edit.js"></script> --}}
+{{/if}}

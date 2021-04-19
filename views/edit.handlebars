@@ -1,6 +1,6 @@
 <div class="container ">
 <div class="row">
-  <h2>Edit Post</h2>
+  <h2>{{title}}</h2>
   <form class= "edit-post-form new-post-form" >
     <div class="form-floating mb-3 ">
   <input type="text" class="form-control" id="floatingInput" placeholder="{{post.title}}" value="{{title}}">
@@ -10,8 +10,8 @@
   <textarea type="text" class="form-control" placeholder="{{post.content}}" id="floatingTextarea2" style="height: 100px">{{content}}</textarea>
   <label for="floatingTextarea2" id="post-content"></label> <br>
   <input type="hidden" value="{{id}}" class="postId">
-  <input class="btn btn-primary dataId" data-postId="{{id}}" type="submit" value="Submit">
-  <input class="btn btn-primary dataId delete-btn " data-postId="{{id}}" type="submit" value="Delete">
+  <input class="btn btn-primary dataId" data-postId="{{id}}" type="submit" value="Edit">
+  <input class="btn btn-primary dataId delete-btn " data-id="{{id}}" type="submit" value="Delete">
 </div>
 </form>
 </div>

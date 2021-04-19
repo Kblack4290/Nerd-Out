@@ -26,15 +26,17 @@ router.get('/', async (req, res) => {
     const post = postData.map((post) => post.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      post, 
+    res.render('homepage', {
+      post,
       logged_in: req.session.logged_in,
       homeActive: true,
       dashActive: false,
       loginActive: false,
     });
   } catch (err) {
+
     res.status(500).json(err);
+
   }
 });
 
@@ -48,21 +50,20 @@ router.get('/post/:id', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
-
-        include[{
+        {
           model: Comment,
-          include: {
-            model: User,
-            attributes: ['name']
+          attributes: ['comment_text', 'user_id', 'date_created'],
+          include: [
+            User,
+          ],
+        },
 
-          }
-        }]
       ],
     });
 
     const post = postData.get({ plain: true });
 
-    res.render('createPost', {
+    res.render('comment', {
       ...post,
       logged_in: req.session.logged_in,
       logged_name: req.session.logged_name,
@@ -76,27 +77,80 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
+// router.get('/post/:id', async (req, res) => {
+
+//   console.log(req.body);
+//   try {
+//     const postData = await Post.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         }, 
+//         {
+//           model: Comment,
+//           attributes: ['content', 'user_id', 'date_created'],
+//           include: [
+//             User,
+//           ],
+//         },
+//       ],
+//     });
+
+//     const post = postData.get({ plain: true });
+
+//     res.render('comment', {
+//       ...post,
+//       logged_in: req.session.logged_in,
+
+//     });
+//   } catch (err) {
+
+//     res.status(500).json(err);
+//   }
+// });
+
+// router.get('/comment', async (req, res) => {
+//   try {
+//     res.render('comment', {
+//       include: [
+//         {
+//           model: User,
+//         }, 
+//         {
+//             model: Comment,
+//         },
+//         {
+//           model: Post,
+//       }
+//       ],
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 // edit post
 router.get('/edit/:id', async (req, res) => {
-  try { 
+  try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
-        model: User,
-        attributes:['name'],
-      },
-    ],
+          model: User,
+          attributes: ['name'],
+        },
+      ],
     });
-    const post = postData.get({plain: true});
+    const post = postData.get({ plain: true });
     res.render('edit', {
-    ...post,
+      ...post,
       logged_in: req.session.logged_in,
       homeActive: false,
       loginActive: false,
       dashActive: false,
     });
-  } catch (err){
-    console.log("Need EDIT");
+  } catch (err) {
+
     res.status(500).json(err);
   }
 });
