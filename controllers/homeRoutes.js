@@ -11,14 +11,6 @@ router.get('/', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
-        // include[{
-        //   model: Comment,
-        //   include: {
-        //     model: User,
-        //     attributes: ['name']
-
-        //   }
-        // }]
       ],
     });
 
@@ -77,58 +69,6 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-// router.get('/post/:id', async (req, res) => {
-
-//   console.log(req.body);
-//   try {
-//     const postData = await Post.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         }, 
-//         {
-//           model: Comment,
-//           attributes: ['content', 'user_id', 'date_created'],
-//           include: [
-//             User,
-//           ],
-//         },
-//       ],
-//     });
-
-//     const post = postData.get({ plain: true });
-
-//     res.render('comment', {
-//       ...post,
-//       logged_in: req.session.logged_in,
-
-//     });
-//   } catch (err) {
-
-//     res.status(500).json(err);
-//   }
-// });
-
-// router.get('/comment', async (req, res) => {
-//   try {
-//     res.render('comment', {
-//       include: [
-//         {
-//           model: User,
-//         }, 
-//         {
-//             model: Comment,
-//         },
-//         {
-//           model: Post,
-//       }
-//       ],
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 // edit post
 router.get('/edit/:id', async (req, res) => {
@@ -220,5 +160,6 @@ router.get('/signup', (req, res) => {
 
   res.render('signup');
 });
+
 
 module.exports = router;

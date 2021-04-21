@@ -4,19 +4,19 @@ const withAuth = require('../../utils/auth');
 
 
 
-// router.get('/', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
 
-//     try {
-//         const commentData = await Comment.findAll({
+    try {
+        const commentData = await Comment.findAll({
 
-//             include: [{ model: Post }, { model: Comment }, { model: User }]
-//         })
-//         res.status(200).json(commentData);
-//     }
-//     catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+            include: [{ model: Post }, { model: Comment }, { model: User }]
+        })
+        res.status(200).json(commentData);
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 router.get('/:id', async (req, res) => {
 
@@ -44,15 +44,14 @@ router.get('/:id', async (req, res) => {
 });
 
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/:id', withAuth, async (req, res) => {
 
     // Create a new comment
     try {
         const newComment = await Comment.create({
             ...req.body,
             user_id: req.session.user_id,
-            comment_text: req.body.comment_text,
-            post_id: req.body.post_id
+
         });
 
         res.status(200).json(newComment);

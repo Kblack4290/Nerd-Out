@@ -2,14 +2,14 @@
 const commentFormHandler = async (event) => {
     event.preventDefault();
 
-    const comment = document.query('.comment-content').value.trim();
-    const post_id = document.querySelector('.post-list').value.trim();
+    const comment = document.query('#floatingTextarea2').value.trim();
+    const post_id = document.querySelector('#post-id').value.trim();
 
 
     if (comment && post_id) {
 
         const response =await  fetch(`/api/comments`, {
-            method: 'post',
+            method: 'POST',
             body: JSON.stringify({comment, post_id}),
             headers: {
                 'Content-Type': 'application/json',
@@ -25,6 +25,6 @@ const commentFormHandler = async (event) => {
 
 }
 
-// document
-//     .querySelector('.')
-//     .addEventListener('.post-list', commentFormHandler);
+document
+    .querySelector('.comment-form')
+    .addEventListener('.comment-btn', commentFormHandler);
