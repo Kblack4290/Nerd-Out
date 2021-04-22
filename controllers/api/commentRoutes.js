@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
 });
 
 
-router.post('/:id', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
 
     // Create a new comment
     try {

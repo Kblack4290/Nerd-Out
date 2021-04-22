@@ -54,7 +54,8 @@ router.get('/post/:id', async (req, res) => {
     });
 
     const post = postData.get({ plain: true });
-
+    console.log("COMMENT CREATE BODY")
+    console.log(req.body)
     res.render('comment', {
       ...post,
       logged_in: req.session.logged_in,

@@ -1,22 +1,25 @@
 
 const commentFormHandler = async (event) => {
+    console.log("click");
     event.preventDefault();
 
-    const comment = document.query('#floatingTextarea2').value.trim();
+    const comment = document.querySelector('#floatingTextarea2').value.trim();
     const post_id = document.querySelector('#post-id').value.trim();
+
 
 
     if (comment && post_id) {
 
-        const response =await  fetch(`/api/comments`, {
+        const response =await fetch('/api/comment', {
             method: 'POST',
             body: JSON.stringify({comment, post_id}),
             headers: {
                 'Content-Type': 'application/json',
             },
-        });
+        }); 
         if(response.ok) {
             document.location.replace(`/post/${post_id}`);
+            console.log("hello");
         } else {
             alert('Failed to comment on post')
         }
@@ -27,4 +30,4 @@ const commentFormHandler = async (event) => {
 
 document
     .querySelector('.comment-form')
-    .addEventListener('.comment-btn', commentFormHandler);
+    .addEventListener('submit', commentFormHandler);
