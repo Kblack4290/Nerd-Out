@@ -7,23 +7,23 @@ Comment.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            // allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
         },
 
         comment_text: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
         },
         
         date_created: {
             type: DataTypes.DATE,
-            allowNull: false,
+            // allowNull: false,
             defaultValue: DataTypes.NOW,
         },
 
@@ -42,9 +42,8 @@ Comment.init(
                 key: 'id',
             },
         },
-
-
     },
+
     {
         sequelize,
         timestamps: false,
