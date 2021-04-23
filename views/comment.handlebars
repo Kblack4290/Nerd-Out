@@ -1,16 +1,24 @@
-
-
-{{>post-content}}
-
-
+<div class="post-list"><h5>{{post.title}}</h5></div>
+  
+  
+      <div id="created-by">  Posted by {{post.user.name}} on {{format_date post.date_created}}</span>
     
+    <div class="comment-content">
+      <span>{{post.content}}</span>
+    </div>
+
+
+{{#if post.comments}}
+    {{#each post.comments}}
     <div class="card">
   <h6 class="card-header">Comment</h6>
   <div class="card-body">
-    <p class="card-text comment-text" placeholder="{{comment.comment-text}}">{{comment.comment-text}}</p>
-    <p class="card-text">-{{comment.comment-text}}</p>
+    <p class="card-text comment-text" placeholder="">{{comment_text}}</p>
+    <p class="card-text">-</p>
   </div>
 </div>
+{{/each}}
+{{/if}}
 
 <form class="comment-form">
   <div class="post-comment">
