@@ -38,11 +38,11 @@ router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
-      
-           User,
-          {
+
+        User,
+        {
           model: Comment,
-          
+
           include: [
             User,
           ],
@@ -50,21 +50,21 @@ router.get('/post/:id', async (req, res) => {
 
       ],
     });
-if(postData){
+    if (postData) {
 
-  const post = postData.get({ plain: true });
-    console.log("COMMENT CREATE BODY")
-    console.log(postData)
-    res.render('comment', {
-      post,
-      logged_in: req.session.logged_in,
-      logged_name: req.session.logged_name,
-      logged_in: req.session.logged_in,
-      homeActive: false,
-      dashActive: false,
-      loginActive: false,
-    });
-}
+      const post = postData.get({ plain: true });
+      console.log("COMMENT CREATE BODY")
+      console.log(postData)
+      res.render('comment', {
+        post,
+        logged_in: req.session.logged_in,
+        logged_name: req.session.logged_name,
+        logged_in: req.session.logged_in,
+        homeActive: false,
+        dashActive: false,
+        loginActive: false,
+      });
+    }
 
   } catch (err) {
     res.status(500).json(err);

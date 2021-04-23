@@ -1,27 +1,29 @@
-<div class="container new-post-form">
+<div style="background-color:#2d3e50; padding:20px; color:#d9e9e8 ;">
+<h2>{{name}}'s' Dashboard</h2>
+  </div>
+
+<div class=" new-post-form">
    {{#if posts.length}}
 <div class="mb-3">
 
- 
-<div>
-<h2>{{name}}'s' Dashboard</h2>
-  </div>
   
  <ul> {{#each posts as |post|}}
   
 
   <div id="postContent">{{>post-content}}</div>
 
-<div><a class="btn btn-primary" href="/edit/{{id}}" role="button">Edit</a></div>
+<div style="margin-top: 10px;"><a class="btn btn-primary" href="/edit/{{id}}" role="button">Edit</a></div>
 </div>
 {{/each}}
 </ul>
 {{/if}}
 <br>
-<div>
+</div>
+
+<div  >
  <a type="button" class="btn btn-primary btn-lg " href="/createPost" id="create-new-post" >+Create New Post</a>
 </div>
 
-</div>
+
 
 <script src="./js/post.js"></script>

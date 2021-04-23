@@ -1,20 +1,22 @@
-<div class="post-list"><h5>{{post.title}}</h5></div>
+ <div class="post-div">
+      <div class="post-list div-head"><h5>{{post.title}}</h5></div>
   
   
-      <div id="created-by">  Posted by {{post.user.name}} on {{format_date post.date_created}}</span>
+      <div id="created-by " class="name-date">  Posted by {{post.user.name}} on {{format_date post.date_created}}</div>
     
     <div class="comment-content">
       <span>{{post.content}}</span>
     </div>
+</div>
 
 
 {{#if post.comments}}
     {{#each post.comments}}
-    <div class="card">
+    <div class="card comment-div">
   <h6 class="card-header">Comment</h6>
   <div class="card-body">
-    <p class="card-text comment-text" placeholder="">{{comment_text}}</p>
-    <p class="card-text">-</p>
+    <p class="card-text comment-text " placeholder="">{{comment_text}}</p>
+    <p class="card-text name-date">-{{user.name}} {{format_date date_created}}</p>
   </div>
 </div>
 {{/each}}
@@ -26,8 +28,8 @@
     </div>
 
       
-      <div>
-        <input type="hidden" value="{{id}}" id="post-id">
+      <div class= "addComment-btn">
+        <input type="hidden" value="{{post.id}}" id="post-id">
         <button class="btn btn-primary dataId comment-btn " value="Add Comment" type="submit" >Add Comment
     </button>
 </form>

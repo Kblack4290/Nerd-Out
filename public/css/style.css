@@ -22,3 +22,36 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 }
+
+.div-head {
+
+  background:#2d3e50 ;
+  color:#d9e9e8 ;
+  padding:10px
+}
+
+.name-date{
+  font-size: 13px ;
+  margin-left: 5px;
+
+}
+.post-div{
+border: 1px solid rgba(0,0,0,.125);
+margin-top:20px;
+
+}
+
+.comment-div {
+
+  margin-top:20px;
+}
+
+.comment-content{
+  margin-left: 5px;
+  padding:5px;
+}
+
+.addComment-btn{
+
+margin-top:10px;
+}
