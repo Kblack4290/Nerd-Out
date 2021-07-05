@@ -20,6 +20,15 @@ Nerd Out is a blogging application where users can share thoughts and ideas. The
 
 https://drive.google.com/file/d/1l59uB3fRwqcL8fZ-Q4myMdFq3mwDbdyP/view
 
+![Home Page](Assets/img/Dashboard1.PNG)
+
+![Home Page](Assets/img/Login.PNG)
+
+![Home Page](Assets/img/create_post.PNG)
+
+![Home Page](Assets/img/User_Profile.PNG)
+
+
 ## Installation
 
 * Clone the repository
